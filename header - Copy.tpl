@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{if $kbarticle.title}{$kbarticle.title} - {/if}{$pagetitle} - {$companyname}</title>
+
     {include file="$template/includes/head.tpl"}
 
     {$headoutput}
@@ -13,24 +14,13 @@
 <body>
 
 {$headeroutput}
-	
-<!-- TOP BAR - START -->
-<section id="topbar" class="section">
+
+<section id="header">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 member nomargin">
-                <ul>
-                    <!--<li><a href="#" title="Facebook" class="topbar-fb"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" title="Twitter" class="topbar-twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" title="Google +" class="topbar-google"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" title="Linkedin" class="topbar-linkedin"><i class="fa fa-linkedin"></i></a></li>-->
-                    <li><a href="#">Become a Member</a></li>
-                    <li><a href="#">WHC Foundation</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 login-cart  nomargin">
-                
-				    <!-- Language -->
+
+        <!-- Top Bar -->
+        <div id="top-nav">
+            <!-- Language -->
             {if $languagechangeenabled && count($locales) > 1}
                 <div class="pull-right nav">
                     <a href="#" class="quick-nav" data-toggle="popover" id="languageChooser"><i class="fa fa-language"></i> {$LANG.chooselanguage} <span class="caret"></span></a>
@@ -87,103 +77,24 @@
                 <a href="{$WEB_ROOT}/cart.php?a=view" class="quick-nav"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{$LANG.viewcart} (</span><span id="cartItemCount">{$cartitemcount}</span><span class="hidden-xs">)</span></a>
             </div>
 
-           
-				
-				
-				
-				
-            </div>
+            {if $adminMasqueradingAsClient}
+                <!-- Return to admin link -->
+                <div class="alert alert-danger admin-masquerade-notice">
+                    {$LANG.adminmasqueradingasclient}<br />
+                    <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="alert-link">{$LANG.logoutandreturntoadminarea}</a>
+                </div>
+            {elseif $adminLoggedIn}
+                <!-- Return to admin link -->
+                <div class="alert alert-danger admin-masquerade-notice">
+                    {$LANG.adminloggedin}<br />
+                    <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="alert-link">{$LANG.returntoadminarea}</a>
+                </div>
+            {/if}
+
         </div>
-    </div>
-</section>
-<!-- TOP BAR - END -->	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-<section id="header">
-    <div class="container">
+        <a href="{$WEB_ROOT}/index.php"><img src="{$WEB_ROOT}/templates/{$template}/img/logo.png" alt="{$companyname}" /></a>
 
-        <!-- Top Bar -->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 logo">
-
-        <a href="{$WEB_ROOT}/index.php"><img src="{$WEB_ROOT}/templates/{$template}/img/whc-logo.svg" alt="{$companyname}" /></a>
-</div>
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		<form action="https://members.webhosting.coop/checkdomain/" method="post" onsubmit="return check_domain(this,&quot;#updater&quot;);">
-
- <input name="register" type="hidden">
-
-<input name="action" value="checkdomain" type="hidden">
-
-<input name="singlecheck" value="1" type="hidden">
-
-<input name="domain_cat" value="4" type="hidden">
-
-               <div class="topdomain">
-
-               <h3>Register Domain Name: <span class="width30"></span><span id="checkDomainId"></span></h3>
-
-   					<div class="domaininput2">
-
-			 		  <input name="sld" value="Search Domain Here..." onblur="if(this.value=='') this.value='Search Domain Here...';" onfocus="if(this.value=='Search Domain Here...') this.value='';" type="text" id="domainfield" class="domainfield"> 			    
-
-					</div>	
-
-			  	   
-
-			  	   <div class="selectbg">
-
-			  	   	<select id="tlddrop" name="tld" class="domainselect">
-
-						 	<option name="tld" value=".com" title=".com">.com</option>
-
-						 	<option name="tld" value=".net" title=".net">.net</option>
-
-						 	<option name="tld" value=".org" title=".org">.org</option>
-
-						 	<option name="tld" value=".mobi" title=".mobi">.mobi</option>
-
-						 	<option name="tld" value=".us" title=".us">.us</option>
-
-						 	<option name="tld" value=".co" title=".org">.org</option>
-
-						 	<option name="tld" value=".biz" title=".biz">.biz</option>
-
-						 	<option name="tld" value=".co.uk" title=".co.uk">.co.uk</option>
-
-						 	 
-
-						  </select> 	
-
-						
-
-					</div>	    
-
-			   	 <div class="domainbutton">
-
-						<input type="submit" id="sendbutton" class="sendbutton" value="Register">
-
-					</div>
-
-		</div><div style="clear:both;"></div>
-
-			</form>	
-			
-			{if $loggedin}
-			<div class="topdomainlinks"><a href="domainchecker.php">My Domains</a> | <a href="cart.php?a=add&domain=transfer&sld=&tld=.">Transfer Domains</a></div>
-			{else}
-			<div class="topdomainlinks"><a href="domainchecker.php">Register Domains</a> | <a href="cart.php?a=add&domain=transfer&sld=&tld=.">Transfer Domains</a></div>
-			{/if}
-		</div>
     </div>
 </section>
 
