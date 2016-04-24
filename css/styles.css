@@ -16,6 +16,8 @@
  * @link      http://www.whmcs.com/
  */
 
+
+
 html,body {
     height: 100%;
 }
@@ -53,8 +55,8 @@ section#main-content {
 }
 
 section#footer p {
-    margin: 25px 0 0 0;
-    border-top: 20px solid #006687;
+    margin: 0;
+    
     line-height: 40px;
     color: #666;
     font-size: 0.7em;
@@ -115,6 +117,24 @@ div.header-lined small {
         padding-right: 35px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * -------------------------
@@ -236,7 +256,15 @@ section#main-menu {
 section#home-banner {
     margin: 0;
     padding: 50px 0 60px;
-    background-color: #2E363F;
+      background: #003C5A;
+    background-image: url('../img/blue-bg.png');
+    background-image: url('../img/blue-bg.png'), -webkit-gradient(linear, left top, left bottom, from(#083F59), to(#0C719E));
+    background-image: url('../img/blue-bg.png'), -webkit-linear-gradient(top, #083F59, #0C719E);
+    background-image: url('../img/blue-bg.png'), -moz-linear-gradient(top, #083F59, #0C719E);
+    background-image: url('../img/blue-bg.png'), -ms-linear-gradient(top, #083F59, #0C719E);
+    background-image: url('../img/blue-bg.png'), -o-linear-gradient(top, #083F59, #0C719E);
+    background-image: url('../img/blue-bg.png'), linear-gradient(top, #083F59, #0C719E);
+	
     color: #fff;
 }
 
@@ -265,19 +293,21 @@ section#home-banner h2 {
 
 .home-shortcuts {
   margin: 0;
-  background: #15A4D3;
-  color: #fff;
+  background: #EDEDED;
+  color: #333;
+	border-bottom:1px solid #BBB;
 }
 .home-shortcuts ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+	
 }
 .home-shortcuts li {
   float: left;
   width: 24%;
   padding: 5px 3px;
-  border-right: 1px solid #0E88B0;
+  border-right: 1px solid #BBB;
   font-size: 0.9em;
   text-align: center;
   cursor: pointer;
@@ -285,11 +315,11 @@ section#home-banner h2 {
   white-space: nowrap;
 }
 .home-shortcuts li:first-child {
-  border-left: 1px solid #0E88B0;
+  border-left: 1px solid #BBB;
 }
 .home-shortcuts li a {
   display: block;
-  color: #fff;
+  color: #333;
   text-decoration: none;
 }
 .home-shortcuts li i {
@@ -1732,6 +1762,7 @@ h3.with-badge .badge {
 /**
  * -------------------------
  * Login or Register Popover
+ * -------------------------
  * -------------------------
  */
 
